@@ -1,0 +1,200 @@
+
+INSERT INTO users (UserID, UserPassword, UserName, Role, CustomerCategory) 
+VALUES (10001, 'admin123', 'Admin User', 'Admin', '');
+
+select * from users;
+
+drop table users;
+
+
+INSERT INTO users (UserID, UserPassword, UserName, Role, CustomerCategory, Phone, EmailId, Address, City, State, Country, ZipCode, DOB) 
+VALUES (10001, 'cgplq123', 'Admin User', 'Admin', '', 9999999999, 'admin@example.com', 'Admin Address', 'Admin City', 'Admin State', 'Admin Country', 123456, '1971-01-01');
+
+
+CREATE TABLE users (
+    UserID INTEGER PRIMARY KEY AUTOINCREMENT CHECK (UserID >= 10000),
+    UserPassword TEXT NOT NULL,
+    UserName TEXT NOT NULL,
+    Role TEXT CHECK (Role IN ('Admin', 'Customer')) NOT NULL DEFAULT 'Customer',
+    CustomerCategory TEXT CHECK (CustomerCategory IN ('Silver', 'Gold', 'Platinum', '')) DEFAULT '',
+    Phone INTEGER NOT NULL,
+    EmailId TEXT NOT NULL,
+    Address TEXT NOT NULL,
+    City TEXT NOT NULL,
+    State TEXT NOT NULL,
+    Country TEXT NOT NULL,
+    ZipCode INTEGER NOT NULL,
+    DOB TEXT NOT NULL
+);
+
+
+
+CREATE TABLE Carriers (
+    CarrierID INTEGER PRIMARY KEY, 
+    CarrierName TEXT NOT NULL,
+    Discount30Days INTEGER, 
+    Discount60Days INTEGER, 
+    Discount90Days INTEGER, 
+    BulkBookingDiscount INTEGER, 
+    Refund2Days INTEGER, 
+    Refund10Days INTEGER, 
+    Refund20Days INTEGER, 
+    SilverUserDiscount INTEGER, 
+    GoldUserDiscount INTEGER, 
+    PlatinumUserDiscount INTEGER
+);
+
+
+CREATE TABLE Flights (
+    FlightID INTEGER PRIMARY KEY, 
+    CarrierID INTEGER, 
+    Origin TEXT NOT NULL, 
+    Destination TEXT NOT NULL, 
+    AirFare INTEGER NOT NULL, 
+    EconomySeats INTEGER CHECK (EconomySeats >= 20), 
+    BusinessSeats INTEGER CHECK (BusinessSeats >= 10), 
+    ExecutiveSeats INTEGER CHECK (ExecutiveSeats >= 5),
+    FOREIGN KEY (CarrierID) REFERENCES Carriers(CarrierID)
+);
+
+
+
+select * from Carriers;
+
+
+
+
+
+SELECT sqlite_version();
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (1, 'Emirates', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (2, 'Qatar Airways', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (3, 'British Airways', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (4, 'Lufthansa', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (5, 'Air France', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+INSERT INTO Carriers (CarrierID, CarrierName, Discount30Days, Discount60Days, Discount90Days, BulkBookingDiscount, 
+                      Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, GoldUserDiscount, PlatinumUserDiscount) 
+VALUES (6, 'Singapore Airlines', 5, 10, 15, 3, 50, 70, 90, 2, 3, 5);
+
+
+select * from Flights;
+
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (101, 1, 'New York', 'Dubai', 800, 50, 20, 10);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (102, 2, 'London', 'Doha', 700, 40, 15, 8);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (103, 3, 'Paris', 'New York', 900, 60, 25, 12);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (104, 4, 'Berlin', 'Tokyo', 1200, 30, 10, 6);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (105, 5, 'Sydney', 'Singapore', 750, 25, 12, 7);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (106, 6, 'Los Angeles', 'Hong Kong', 850, 55, 18, 9);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (107, 1, 'Dubai', 'Mumbai', 300, 100, 35, 15);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (108, 2, 'Tokyo', 'Seoul', 450, 40, 18, 8);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (109, 3, 'Madrid', 'Rome', 200, 50, 15, 5);
+
+INSERT INTO Flights (FlightID, CarrierID, Origin, Destination, AirFare, EconomySeats, BusinessSeats, ExecutiveSeats) 
+VALUES (110, 4, 'Toronto', 'Vancouver', 400, 60, 20, 10);
+
+
+
+CREATE TABLE Booking (
+    BookingID INTEGER PRIMARY KEY AUTOINCREMENT CHECK (BookingID >= 10001),
+    FlightID INTEGER NOT NULL,
+    UserID INTEGER NOT NULL,
+    NoOfSeats INTEGER NOT NULL,
+    SeatCategory TEXT CHECK (SeatCategory IN ('Economy', 'Executive', 'Business')) NOT NULL,
+    DateOfTravel TEXT NOT NULL,
+    BookingStatus TEXT CHECK (BookingStatus IN ('Booked', 'Travel Completed', 'Cancelled')) NOT NULL DEFAULT 'Booked',
+    BookingAmount INTEGER NOT NULL,
+    FOREIGN KEY (FlightID) REFERENCES Flights(FlightID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+PRAGMA foreign_keys=ON;
+
+INSERT INTO Booking (BookingID,FlightID, UserID, NoOfSeats, SeatCategory, DateOfTravel, BookingStatus, BookingAmount) VALUES (10001,107, 10004, 5, 'Economy', '2025-03-20', 'Booked', 2000);
+
+select * from Booking;
+
+drop table Booking;
+
+INSERT INTO Booking (FlightID, UserID, NoOfSeats, SeatCategory, DateOfTravel, BookingStatus, BookingAmount)  
+VALUES (107, 10004, 2, 'Economy', '2025-03-20', 'Booked', 800);
+
+
+SELECT * FROM Flights WHERE FlightID = 107;
+SELECT * FROM Users WHERE UserID = 10004;
+
+
+PRAGMA table_info(Booking);
+PRAGMA foreign_key_list(Booking);
+
+PRAGMA foreign_keys = ON;
+PRAGMA foreign_key_check;
+
+select * from users;
+
+delete from users;
+
+--After Encryption
+
+select * from users;
+
+delete from users;
+
+drop table users;
+
+CREATE TABLE users (
+    UserID INTEGER PRIMARY KEY AUTOINCREMENT CHECK (UserID >= 10000),
+    UserPassword TEXT NOT NULL,
+    UserName TEXT NOT NULL,
+    Role TEXT CHECK (Role IN ('Admin', 'Customer')) NOT NULL DEFAULT 'Customer',
+    CustomerCategory TEXT CHECK (CustomerCategory IN ('Silver', 'Gold', 'Platinum', '')) DEFAULT '',
+    Phone INTEGER NOT NULL,
+    EmailId TEXT NOT NULL,
+    Address TEXT NOT NULL,
+    City TEXT NOT NULL,
+    State TEXT NOT NULL,
+    Country TEXT NOT NULL,
+    ZipCode INTEGER NOT NULL,
+    DOB TEXT NOT NULL
+);
+
+
+INSERT INTO users (UserID, UserPassword, UserName, Role, CustomerCategory, Phone, EmailId, Address, City, State, Country, ZipCode, DOB) 
+VALUES (10001, 'Eoxh@456', 'Admin User', 'Admin', '', 9999999999, 'admin@example.com', 'Admin Address', 'Admin City', 'Admin State', 'Admin Country', 123456, '1971-01-01');
+
+select * from Booking;
+
+delete from Booking;
+

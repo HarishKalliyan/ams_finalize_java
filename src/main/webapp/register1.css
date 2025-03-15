@@ -1,0 +1,179 @@
+body {
+  background-color: teal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Inter", serif;
+}
+
+.register-container {
+  width: 400px;
+  background-color: Gray94;
+  padding: 20px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: black;
+}
+h2 {
+  color: whitesmoke;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Style the dropdown */
+select {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  appearance: none; /* Removes default browser styles */
+  cursor: pointer;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add dropdown arrow */
+select:after {
+  content: "▼";
+  font-size: 14px;
+  color: black;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Hover & Focus Effect */
+select:hover,
+select:focus {
+  border: 2px solid dodgerblue;
+  background-color: #f0f0f0;
+}
+
+
+input,
+textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+.register-btn {
+  background-color: DodgerBlue;
+  color: white;
+  padding: 10px;
+  font-weight: bolder;
+  font-size: medium;
+  width: 96%;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.register-btn:hover {
+  background-color: #0047ab;
+}
+
+.reset-btn {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+  width: 96%;
+  border: none;
+  font-weight: bolder;
+  font-size: medium;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.reset-btn:hover {
+  background-color: rgb(95, 94, 94);
+}
+
+p {
+  color: white;
+  font-weight: bold;
+}
+a {
+  font-weight: bold;
+  color: dodgerblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(246, 103, 103);
+}
+
+#alert-message,
+#reset-message,
+#error-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+  z-index: 20;
+}
+
+#alert-message p,
+#reset-message p,
+#error-message p {
+  color: black;
+}
+
+#alert-message button,
+#reset-message button,
+#error-message button {
+  background: teal;
+  color: aliceblue;
+  padding: 8px 16px;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+label{
+	padding: 10px;
+	margin:10px 20px
+}
+
+#alert-message button:hover,
+#reset-message button:hover,
+#error-message button:hover {
+  background: rgb(130, 140, 140);
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+  z-index: 10; /* Higher than other elements */
+}
