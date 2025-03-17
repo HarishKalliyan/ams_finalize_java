@@ -1,5 +1,8 @@
+
 body{
+
     background-color: teal;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,6 +190,9 @@ a:hover{
     background: rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
+
+
+
 
 
 

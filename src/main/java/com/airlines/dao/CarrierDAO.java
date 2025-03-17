@@ -1,4 +1,7 @@
+
 package com.airlines.dao;
+
+
 
 
 import java.sql.Connection;
@@ -13,34 +16,43 @@ import com.airlines.beans.Carrier;
 
 
 public class CarrierDAO {
-	 public static List<Carrier> getAllCarriers() {
-	        List<Carrier> carriers = new ArrayList<>();
-	        String sql = "SELECT * FROM Carriers";
+	
+	
+	public static List<Carrier> getAllCarriers() {
+	    List<Carrier> carriers = new ArrayList<>();
+	    String sql = "SELECT c.*, COUNT(f.FlightID) AS FlightCount " +
+	                 "FROM Carriers c " +
+	                 "LEFT JOIN Flights f ON c.CarrierID = f.CarrierID " +
+	                 "GROUP BY c.CarrierID " +
+	                 "ORDER BY FlightCount DESC";  // Sort by number of flights in descending order
 
-	        try (Connection conn = DatabaseConnection.getConnection();
-	             Statement stmt = conn.createStatement();
-	             ResultSet rs = stmt.executeQuery(sql)) {
+	    try (Connection conn = DatabaseConnection.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql);
+	         ResultSet rs = stmt.executeQuery()) {
 
-	            while (rs.next()) {
-	            	carriers.add(new Carrier(rs.getInt("CarrierID"),
-	            			rs.getString("CarrierName"),
-	            			rs.getInt("Discount30Days"), 
-	            			rs.getInt("Discount60Days"),
-	            			rs.getInt("Discount90Days"),
-	            			rs.getInt("BulkBookingDiscount"), 
-	            			rs.getInt("Refund2Days"), 
-	            			rs.getInt("Refund10Days"), 
-	            			rs.getInt("Refund20Days"), 
-	            			rs.getInt("SilverUserDiscount"),
-	            			rs.getInt("GoldUserDiscount"),
-	            			rs.getInt("PlatinumUserDiscount")
-	            			));
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        while (rs.next()) {
+	            carriers.add(new Carrier(
+	                rs.getInt("CarrierID"),
+	                rs.getString("CarrierName"),
+	                rs.getInt("Discount30Days"),
+	                rs.getInt("Discount60Days"),
+	                rs.getInt("Discount90Days"),
+	                rs.getInt("BulkBookingDiscount"),
+	                rs.getInt("Refund2Days"),
+	                rs.getInt("Refund10Days"),
+	                rs.getInt("Refund20Days"),
+	                rs.getInt("SilverUserDiscount"),
+	                rs.getInt("GoldUserDiscount"),
+	                rs.getInt("PlatinumUserDiscount")
+	            ));
 	        }
-	        return carriers;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
 	    }
+	    return carriers;
+	}
+	
+	
 	
 	    public static boolean deleteCarrier(int carrierId) {
 	    	String deleteFlightSQL = "DELETE FROM Flights Where CarrierID =?";
@@ -120,6 +132,8 @@ public class CarrierDAO {
 	        }
 	        return false;
 }
+	    
+
 	    public boolean addCarrier(Carrier carrier) {
 	        String sql = "INSERT INTO Carriers (CarrierName, Discount30Days, Discount60Days, Discount90Days, " +
 	                     "BulkBookingDiscount, Refund2Days, Refund10Days, Refund20Days, SilverUserDiscount, " +
@@ -146,3 +160,5 @@ public class CarrierDAO {
 	        return false;
 	    }
 }
+
+

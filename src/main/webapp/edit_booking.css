@@ -1,5 +1,8 @@
+
 @charset "UTF-8";
+
 /* General Styling */
+
 body {
   font-family: "Inter", sans-serif;
   background-color: teal;
@@ -90,3 +93,7 @@ button {
   background-color: #cc0000;
   transform: scale(1.05);
 }
+
+
+
+

@@ -1,4 +1,7 @@
+
 package com.airlines.dao;
+
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -7,6 +10,96 @@ import com.airlines.beans.Flight;
 
 public class FlightDAO {
 
+	public static List<Flight> searchFlights(String flightID, String origin, String destination) {
+        List<Flight> flights = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT f.*, c.CarrierName FROM Flights f " +
+                                              "INNER JOIN Carriers c ON f.CarrierID = c.CarrierID WHERE 1=1 ");
+
+        List<Object> params = new ArrayList<>();
+
+        if (flightID != null && !flightID.isEmpty()) {
+            sql.append("AND f.FlightID = ? ");
+            params.add(Integer.parseInt(flightID));
+        }
+        if (origin != null && !origin.isEmpty()) {
+            sql.append("AND LOWER(f.Origin) LIKE LOWER(?) ");
+            params.add("%" + origin + "%");
+        }
+        if (destination != null && !destination.isEmpty()) {
+            sql.append("AND LOWER(f.Destination) LIKE LOWER(?) ");
+            params.add("%" + destination + "%");
+        }
+
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql.toString())) {
+            
+            for (int i = 0; i < params.size(); i++) {
+                if (params.get(i) instanceof Integer) {
+                    ps.setInt(i + 1, (Integer) params.get(i));
+                } else {
+                    ps.setString(i + 1, (String) params.get(i));
+                }
+            }
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                flights.add(new Flight(
+                    rs.getInt("FlightID"),
+                    rs.getInt("CarrierID"),
+                    rs.getString("Origin"),
+                    rs.getString("Destination"),
+                    rs.getInt("AirFare"),
+                    rs.getInt("EconomySeats"),
+                    rs.getInt("BusinessSeats"),
+                    rs.getInt("ExecutiveSeats"),
+                    rs.getString("CarrierName")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flights;
+    }
+	
+	
+	
+	 public static boolean hasActiveBookings(int flightID) {
+	        String sql = "SELECT COUNT(*) FROM Booking WHERE FlightID = ? AND BookingStatus = 'Booked'";
+
+	        try (Connection conn = DatabaseConnection.getConnection();
+	             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	            pstmt.setInt(1, flightID);
+	            ResultSet rs = pstmt.executeQuery();
+
+	            if (rs.next() && rs.getInt(1) > 0) {
+	                return true;  // Flight has active bookings, so we cannot delete it
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false; // No active bookings, flight can be deleted
+	    }
+
+	    // Delete flight (only if no active bookings)
+	    public static boolean deleteFlight(int flightID) {
+	        if (hasActiveBookings(flightID)) {
+	            return false; // Cannot delete if active bookings exist
+	        }
+
+	        String sql = "DELETE FROM Flights WHERE FlightID=?";
+	        try (Connection conn = DatabaseConnection.getConnection();
+	             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+	            pstmt.setInt(1, flightID);
+	            return pstmt.executeUpdate() > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+	
+	
     // Get all flights
 	public static List<Flight> getAllFlights() {
 	    List<Flight> flights = new ArrayList<>();
@@ -101,10 +194,10 @@ public class FlightDAO {
         }
     }
 
-    // Delete flight
-    public static boolean deleteFlight(int flightID) {
+   
+    public static boolean activeBooking(int flightID) {
         try (Connection con = DatabaseConnection.getConnection()) {
-            String query = "DELETE FROM Flights WHERE FlightID=?";
+            String query = "SELECT * From Booking WHERE FlightID=?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, flightID);
             return ps.executeUpdate() > 0;
@@ -114,3 +207,5 @@ public class FlightDAO {
         }
     }
 }
+
+

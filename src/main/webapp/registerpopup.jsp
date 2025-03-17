@@ -1,5 +1,8 @@
+
 <%
+
     String message = (String) request.getAttribute("message");
+
     String messageType = (String) request.getAttribute("messageType"); // success or error
     if (message != null) {
 %>
@@ -12,6 +15,8 @@
         </div>
     </div>
 <% } %>
+
+
 
 
 

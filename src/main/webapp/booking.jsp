@@ -1,5 +1,8 @@
+
 <%@ page import="java.util.List, com.airlines.beans.Flight, com.airlines.dao.FlightDAO, java.time.LocalDate" %>
+
 <%@ include file="user_header.jsp" %>
+
 <%@ include file="user_menu.jsp" %>
 
 <%@ include file="user_popup.jsp" %>

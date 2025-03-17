@@ -1,5 +1,8 @@
+
 <%@ page import="java.util.List, com.airlines.beans.Booking"%>
+
 <%@ include file="user_header.jsp"%>
+
 <%@ include file="user_menu.jsp"%>
 
 <%@ include file="popup.jsp" %>
@@ -135,3 +138,9 @@ tr:hover {
 
 <%@ include file="user_footer.jsp"%>
 </html>
+
+
+
+
+
+

@@ -1,4 +1,7 @@
+
 package com.airlines.beans;
+
+
 
 public class Flight {
     private int flightID;
@@ -87,3 +90,4 @@ public class Flight {
 		this.carrierName = carrierName;
 	}
 }
+

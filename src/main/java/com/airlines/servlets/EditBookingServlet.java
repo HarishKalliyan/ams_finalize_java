@@ -1,5 +1,7 @@
 package com.airlines.servlets;
 
+
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +20,7 @@ public class EditBookingServlet extends HttpServlet {
         int flightID = Integer.parseInt(request.getParameter("flightID"));
         String seatCategory = request.getParameter("seatCategory");
         String dateOfTravel = request.getParameter("dateOfTravel");
-        int bookingAmount = BookingDAO.calculateBookingAmount(flightID, seatCategory, noOfSeats);
+        int bookingAmount = BookingDAO.calculateBookingAmount(flightID, seatCategory, noOfSeats,dateOfTravel);
 
         boolean success = BookingDAO.updateBooking(bookingID, bookingAmount, noOfSeats, seatCategory, dateOfTravel);
 

@@ -1,4 +1,7 @@
+
 package com.airlines.beans;
+
+
 
 import com.airlines.services.UserService;
 
@@ -131,3 +134,5 @@ public class User {
 		this.dob = dob;
 	}
 }
+
+

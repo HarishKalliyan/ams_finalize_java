@@ -1,4 +1,7 @@
+
 package com.airlines.servlets;
+
+
 
 import java.io.IOException;
 import java.util.List;
@@ -34,3 +37,6 @@ public class ViewBookingsServlet extends HttpServlet {
         request.getRequestDispatcher("view_bookings.jsp").forward(request, response);
     }
 }
+
+
+

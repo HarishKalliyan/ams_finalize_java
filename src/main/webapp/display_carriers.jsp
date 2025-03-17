@@ -1,5 +1,6 @@
 
 <%@ page import="java.util.List, com.airlines.beans.Carrier" %>
+
 <%@ include file="header.jsp" %>
 <%@ include file="admin_menu.jsp"%>
 <html>
@@ -93,5 +94,5 @@
 <%@ include file="footer.jsp"%>
 </html>
 
- 
- 
+
+

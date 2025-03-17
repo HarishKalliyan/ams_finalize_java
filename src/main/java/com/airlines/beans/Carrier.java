@@ -1,4 +1,7 @@
+
 package com.airlines.beans;
+
+
 
 public class Carrier {
 	private int carrierId;
@@ -157,16 +160,5 @@ public class Carrier {
 	public void setPlatinumUserDiscount(int platinumUserDiscount) {
 		this.platinumUserDiscount = platinumUserDiscount;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ page isELIgnored="false" %>
+
 <%
     String message = (String) request.getAttribute("message");
     String messageType = (String) request.getAttribute("messageType"); // success or error
@@ -18,3 +20,4 @@
         </div>
     </div>
 <% } %>
+

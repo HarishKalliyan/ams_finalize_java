@@ -1,5 +1,7 @@
 <%@ page import="com.airlines.beans.User" %>
+
 <%@ include file="user_header.jsp" %>
+
 <%@ include file="user_menu.jsp" %>
 <html>
 <%
@@ -78,3 +80,9 @@
 </body>
 <%@ include file="user_footer.jsp" %>
 </html>
+
+
+
+
+
+

@@ -1,5 +1,9 @@
+
+
 <%@ include file="user_header.jsp" %>
+
 <%@ include file="user_menu.jsp" %>
+
 <html>
 <head>
 
@@ -68,3 +72,5 @@
 </body>
 <%@ include file="user_footer.jsp" %>
 </html>
+
+

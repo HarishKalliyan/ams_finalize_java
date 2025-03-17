@@ -1,5 +1,8 @@
+
 body {
+
   font-family: "Inter", serif;
+
   background-color: teal;
   color: white;
   text-align: center;
@@ -129,3 +132,7 @@ button:hover {
   background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
   z-index: 10; /* Higher than other elements */
 }
+
+
+
+

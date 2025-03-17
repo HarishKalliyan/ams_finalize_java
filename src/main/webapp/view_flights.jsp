@@ -1,5 +1,9 @@
+
+
 <%@ page import="java.util.List, com.airlines.beans.Flight, com.airlines.dao.FlightDAO, com.airlines.beans.Carrier, com.airlines.dao.CarrierDAO" %>
+
 <%@ include file="header.jsp" %>
+
 <%@ include file="admin_menu.jsp"%>
 <%@ include file="popup.jsp" %>
 <html>

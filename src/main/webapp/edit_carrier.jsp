@@ -1,5 +1,6 @@
 
 <%@ page import="com.airlines.dao.CarrierDAO, com.airlines.beans.Carrier" %>
+
 <%
     int carrierID = Integer.parseInt(request.getParameter("carrierID"));
 Carrier carrier = CarrierDAO.getCarrierByID(carrierID);
@@ -67,4 +68,3 @@ Carrier carrier = CarrierDAO.getCarrierByID(carrierID);
 </body>
 
 </html>
-

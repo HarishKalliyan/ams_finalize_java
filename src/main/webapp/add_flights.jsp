@@ -1,5 +1,9 @@
+
+
 <%@ page import="java.util.List, com.airlines.beans.Flight, com.airlines.dao.FlightDAO, com.airlines.beans.Carrier, com.airlines.dao.CarrierDAO" %>
+
 <%@ include file="popup.jsp"%>
+
 <html>
 <head>
 <title>Add Flights Details</title>
@@ -82,3 +86,4 @@
 	<button id="backButton" onclick="history.back()">Back</button>
 </body>
 </html>
+

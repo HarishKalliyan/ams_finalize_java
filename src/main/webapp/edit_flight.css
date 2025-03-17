@@ -1,6 +1,7 @@
 
  @charset "UTF-8";
 
+
 /* General Styling */
 body {
     font-family: "Inter", sans-serif;
@@ -112,4 +113,7 @@ button {
         grid-template-columns: 1fr; /* Single column for smaller screens */
     }
 }
+
+
+
 

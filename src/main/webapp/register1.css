@@ -1,5 +1,8 @@
+
 body {
+
   background-color: teal;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,3 +180,4 @@ label{
   background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
   z-index: 10; /* Higher than other elements */
 }
+

@@ -1,5 +1,8 @@
+
 <%@ page session="true" %>
+
 <%
+
     if (session.getAttribute("userID") == null) {
         response.sendRedirect("login.jsp");
         return;

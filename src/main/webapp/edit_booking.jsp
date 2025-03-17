@@ -1,5 +1,8 @@
+
 <%@ page import="com.airlines.beans.Booking, com.airlines.dao.BookingDAO, java.time.LocalDate" %>
+
 <%@ include file="user_popup.jsp" %>
+
  
 <%
     int bookingID = Integer.parseInt(request.getParameter("bookingID"));
@@ -51,3 +54,8 @@
     </div>
 </body>
 </html>
+
+
+
+
+

@@ -1,6 +1,7 @@
 
 <%@ include file="header.jsp"%>
 
+
 <%@ include file="admin_menu.jsp"%>
 
 <html>
@@ -86,5 +87,4 @@ button:hover {
 
 <%@ include file="footer.jsp"%>
 </html>
-
 
