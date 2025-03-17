@@ -198,3 +198,14 @@ select * from Booking;
 
 delete from Booking;
 
+
+CREATE TABLE FlightSchedule (
+    FlightScheduleID INTEGER PRIMARY KEY AUTOINCREMENT,
+    FlightID INTEGER NOT NULL,
+    DateOfTravel TEXT NOT NULL,
+    BusinessClassBookedCount INTEGER DEFAULT 0,
+    EconomyClassBookedCount INTEGER DEFAULT 0,
+    ExecutiveClassBookedCount INTEGER DEFAULT 0,
+    FOREIGN KEY (FlightID) REFERENCES Flights(FlightID)
+);
+
